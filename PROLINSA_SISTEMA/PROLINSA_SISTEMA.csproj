@@ -422,7 +422,6 @@
     <Content Include="Views\detallefacturas\Index.cshtml" />
     <Content Include="Views\Compras\VerCompras.cshtml" />
     <Content Include="Views\Compras\DetalleCompras.cshtml" />
-    <Content Include="Views\Venta\_Detalleparcial.cshtml" />
     <Content Include="Views\Compras\_Detalleparcialcompras.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -435,6 +434,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Venta\_VentasFacturacion.cshtml" />
+    <Content Include="Views\Venta\_Detalleparcial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

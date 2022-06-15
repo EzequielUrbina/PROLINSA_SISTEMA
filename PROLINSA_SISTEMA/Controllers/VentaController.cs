@@ -208,8 +208,11 @@ namespace PROLINSA_SISTEMA.Controllers
         }
 
 
-
-
+        [HttpGet]
+        public ActionResult _VentasFacturacion()
+        {
+            return View();
+        }
 
     }
 }
