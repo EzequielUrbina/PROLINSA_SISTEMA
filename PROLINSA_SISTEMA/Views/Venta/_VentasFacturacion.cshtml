@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,6 +11,7 @@
     <style>
 			.invoice-box {
 				max-width: 800px;
+                max-height: 800px;
 				margin: auto;
 				padding: 30px;
 				border: 1px solid #eee;
@@ -69,6 +74,12 @@
 				font-weight: bold;
 			}
 
+			 .only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
 
 				.invoice-box table tr.information table td {
 					width: 100%;
@@ -90,10 +101,88 @@
 			.invoice-box.rtl table tr td:nth-child(2) {
 				text-align: left;
 			}
+
+
+
+
+
     </style>
 </head>
 
 <body>
+
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="4">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="~/Content/imagenes/prolinsa.png" style="width: 20%; max-width: 1000px" />
+                            </td>
+                            <td>
+                                N° Factura: @ViewBag.nFactura<br />
+                                Fecha: @ViewBag.fechaa.ToString("dd/MM/yyyy")<br />
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr class="information">
+                <td colspan="5">
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <h1 style="text-align:center">PROLINSA</h1>
+                                <h3 style="text-align:center">UN MUNDO DE SOLUCIONES.</h3>
+                                Colonia 14 de Sept. de los semafaros 1c al Sur 1c. al Este.<br />
+                                Telefono: 2253-1000 / 8501-6447 CL. Correo: ventas@prolinsa.com.ni
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr class="heading">
+                <td style="text-align:center">Producto</td>
+                <td style="text-align:center">Cantidad</td>
+                <td style="text-align:center">Importe</td>
+                <td style="text-align:center">Subtotal</td>
+            </tr>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align:center">@item.Producto.NombreProducto</td>
+                        <td style="text-align:center">@item.Cantidad</td>
+                        <td style="text-align:center">@item.Subtotal</td>
+                        <td style="text-align:center">@item.Total</td>
+                    </tr>
+                }
+            </tbody>
+
+            <tr class="total">
+                <td colspan="3"></td>
+
+                <td style="text-align:center">Total: @ViewBag.totall</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
@@ -167,8 +256,8 @@
             <tr class="item last">
                 <td>Domain name (1 year)</td>
 
-                <td>$10.00</td>
-            </tr>
+
+
 
             <tr class="total">
                 <td></td>

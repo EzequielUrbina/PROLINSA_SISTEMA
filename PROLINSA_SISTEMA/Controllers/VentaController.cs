@@ -209,9 +209,13 @@ namespace PROLINSA_SISTEMA.Controllers
 
 
         [HttpGet]
-        public ActionResult _VentasFacturacion()
+        public ActionResult _VentasFacturacion(int Facturaid, DateTime fecha, decimal total)
         {
-            return View();
+            List<detallefactura> detalle = db.detallefactura.Where(m => m.IdDetalleFactura == Facturaid).ToList();
+            ViewBag.fechaa = fecha;
+            ViewBag.nFactura = Facturaid;
+            ViewBag.totall = total;
+            return View(detalle);
         }
 
     }
