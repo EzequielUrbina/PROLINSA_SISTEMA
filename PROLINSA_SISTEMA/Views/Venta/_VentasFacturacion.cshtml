@@ -30,7 +30,7 @@
 
 			.invoice-box table td {
 				padding: 5px;
-				vertical-align: top;
+				vertical-align: central;
 			}
 
 			.invoice-box table tr td:nth-child(2) {
@@ -38,7 +38,7 @@
 			}
 
 			.invoice-box table tr.top table td {
-				padding-bottom: 20px;
+				padding-bottom: 0px;
 			}
 
 			.invoice-box table tr.top table td.title {
@@ -117,14 +117,14 @@
                 <td colspan="4">
                     <table>
                         <tr>
-                            <td>
-                                <img src="~/Content/imagenes/prolinsa.png" style="width: 20%; max-width: 1000px" />
+                            <td style="outline-width:0">
+                                <img src="~/Content/imagenes/prolinsa.png" style="width: 20%; max-width: 300px; align-content:center" />
                             </td>
+                            
                             <td>
                                 N° Factura: @ViewBag.nFactura<br />
                                 Fecha: @ViewBag.fechaa.ToString("dd/MM/yyyy")<br />
                             </td>
-
                         </tr>
                     </table>
                 </td>
@@ -136,7 +136,7 @@
                     <table>
                         <tr>
                             <td align="center">
-                                <h1 style="text-align:center">PROLINSA</h1>
+                                <h1 style="margin:0">PROLINSA</h1>
                                 <h3 style="text-align:center">UN MUNDO DE SOLUCIONES.</h3>
                                 Colonia 14 de Sept. de los semafaros 1c al Sur 1c. al Este.<br />
                                 Telefono: 2253-1000 / 8501-6447 CL. Correo: ventas@prolinsa.com.ni
