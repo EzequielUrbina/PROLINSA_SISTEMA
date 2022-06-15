@@ -36,7 +36,15 @@
                 <td style="text-align:center">@item.Total</td>
                 <td style="text-align:center">@item.Fecha.ToString("dd/MM/yyyy")</td>
                 <td align="center">
-                    @Html.ActionLink("Ver", "_VentasFacturacion", new { Facturaid = item.IdFactura, fecha = item.Fecha, total = item.Total}, new { @class = "btn btn-secondary" })
+                    @Html.ActionLink("Ver", "_VentasFacturacion", new
+               {
+                   Facturaid = item.IdFactura,
+                   fecha = item.Fecha,
+                   total = item.Total,
+                   cliente = item.Clientes.NombreCliente,
+                   empleado = item.EMPLEADOS.Nombre_Empleado,
+                   tipo = item.TipoFactura.Facturas
+               }, new { @class = "btn btn-secondary" })
                 </td>
             </tr>
 

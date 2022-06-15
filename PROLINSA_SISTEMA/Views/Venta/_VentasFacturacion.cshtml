@@ -6,12 +6,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Facturación</title>
 
     <style>
 			.invoice-box {
 				max-width: 800px;
-                max-height: 800px;
 				margin: auto;
 				padding: 30px;
 				border: 1px solid #eee;
@@ -31,6 +30,7 @@
 			.invoice-box table td {
 				padding: 5px;
 				vertical-align: central;
+
 			}
 
 			.invoice-box table tr td:nth-child(2) {
@@ -120,7 +120,7 @@
                             <td style="outline-width:0">
                                 <img src="~/Content/imagenes/prolinsa.png" style="width: 20%; max-width: 300px; align-content:center" />
                             </td>
-                            
+
                             <td>
                                 N° Factura: @ViewBag.nFactura<br />
                                 Fecha: @ViewBag.fechaa.ToString("dd/MM/yyyy")<br />
@@ -135,11 +135,25 @@
                 <td colspan="5">
                     <table>
                         <tr>
-                            <td align="center">
+                            <td align="center" ; style="margin:0">
                                 <h1 style="margin:0">PROLINSA</h1>
                                 <h3 style="text-align:center">UN MUNDO DE SOLUCIONES.</h3>
+                                <h5 style="margin:0; text-align:center">Ruc N°: J0310000260753</h5>
                                 Colonia 14 de Sept. de los semafaros 1c al Sur 1c. al Este.<br />
                                 Telefono: 2253-1000 / 8501-6447 CL. Correo: ventas@prolinsa.com.ni
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="4">
+                    <table>
+                        <tr>
+                            <td>
+                                Cliente: @ViewBag.clientess<br />
+                                Atendido por: @ViewBag.empleadoss
                             </td>
                         </tr>
                     </table>
@@ -169,10 +183,17 @@
             <tr class="total">
                 <td colspan="3"></td>
 
-                <td style="text-align:center">Total: @ViewBag.totall</td>
+                <td style="text-align:center;">Total: @ViewBag.totall</td>
             </tr>
-
         </table>
+ 
+
+        <p style="font-size:5pt; text-align:center; line-height:110%; margin:40px">ESTA FACTURA CUBRE CONTRA DEFECTOS DE FABRICA DEL EQUIPO DESCRITO EN 
+        LA PARTE SUPERIOR POR UN PERIODO DE 1. LOS PRODUCTOS SE DEBEN DE SOMETER A LA GARANTIA CON SU EMPAQUE Y ENVOLTURA ORIGINAL, 
+        ACCESORIOS Y MANUAL. 2. PARA CUBRIR GARANTIA DE PRODUCTOS ESTOS TIENE QUE TENER UN COSTO MINIMO DE $25. 3. NO SERAN CUBIERTOS
+        POR ESTA GARANTIA LOS DESPERFECTOS CAUSADOS POR FALLAS ELECTRICAS O MECANICAS CAUSADOS POR NEGLIGENCIA, DAÑOS INTENCIONADOS
+        O ERRORES DE OPERADOR. 4. QUEDA A CRITERIO DE UHM SA. REPARAR O SUSTITUIR LAS PARTES.</p>
+
     </div>
 
 
