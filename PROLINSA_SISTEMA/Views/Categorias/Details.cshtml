@@ -1,0 +1,35 @@
+﻿@model PROLINSA_SISTEMA.Categorias
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Categorias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion_Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion_Categoria)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdCategoria }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Volver", "Index", new { }, new { @class = "btn btn-secondary"})
+</p>

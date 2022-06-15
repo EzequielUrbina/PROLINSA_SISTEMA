@@ -1,0 +1,955 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PROLINSAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActividadProveedor">
+          <Key>
+            <PropertyRef Name="IdActividad" />
+          </Key>
+          <Property Name="IdActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Activo" Type="varchar" MaxLength="20" />
+          <Property Name="NoActivo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="IDCargo" />
+          </Key>
+          <Property Name="IDCargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cargo" Type="varchar" MaxLength="30" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Categoria" Type="varchar" MaxLength="100" />
+          <Property Name="Descripcion_Categoria" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCliente" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoCliente" Type="varchar" MaxLength="100" />
+          <Property Name="Cedula" Type="varchar" MaxLength="30" />
+          <Property Name="NumeroCelular" Type="varchar" MaxLength="20" />
+          <Property Name="Direccion" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="compras">
+          <Key>
+            <PropertyRef Name="Idcompra" />
+          </Key>
+          <Property Name="Idcompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idproveedor" Type="int" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Total" Type="decimal" Precision="14" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detallecompras">
+          <Key>
+            <PropertyRef Name="Idcompra" />
+          </Key>
+          <Property Name="Idcompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDetalleCompras" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Subtotal" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="Total" Type="decimal" Precision="14" Scale="4" />
+        </EntityType>
+        <EntityType Name="detallefactura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDetalleFactura" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Subtotal" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="Total" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="Totalporfactura" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="DetalleProducto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="NombreProveedor" Type="varchar" MaxLength="100" />
+          <Property Name="PaisProveedor" Type="varchar" MaxLength="30" />
+          <Property Name="TelefonoProveedor" Type="varchar" MaxLength="30" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="FechaCompra" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="EMPLEADOS">
+          <Key>
+            <PropertyRef Name="ID_Empleados" />
+          </Key>
+          <Property Name="ID_Empleados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Empleado" Type="varchar" MaxLength="30" />
+          <Property Name="Apellido_Empleado" Type="varchar" MaxLength="30" />
+          <Property Name="Cedula_Empleado" Type="varchar" MaxLength="30" />
+          <Property Name="Direccion_Empleado" Type="varchar" MaxLength="200" />
+          <Property Name="IDCargo" Type="int" />
+          <Property Name="Salario_Empleado" Type="decimal" Precision="14" Scale="4" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpleados" Type="int" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdTipoFactura" Type="int" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="100" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="300" />
+          <Property Name="Precio_Compra" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="Precio_Venta" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="IdCategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreProveedor" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionProveedor" Type="varchar" MaxLength="300" />
+          <Property Name="PaisProveedor" Type="varchar" MaxLength="30" />
+          <Property Name="TelefonoProveedor" Type="varchar" MaxLength="30" />
+          <Property Name="IdActividad" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoFactura">
+          <Key>
+            <PropertyRef Name="IdTipoFactura" />
+          </Key>
+          <Property Name="IdTipoFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Factura" Type="varchar" MaxLength="30" />
+          <Property Name="Cotizacion" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FKCompra">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="compras" Type="Self.compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="Idproveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdActividad">
+          <End Role="ActividadProveedor" Type="Self.ActividadProveedor" Multiplicity="0..1" />
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadProveedor">
+              <PropertyRef Name="IdActividad" />
+            </Principal>
+            <Dependent Role="Proveedores">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdArticulo">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleProducto" Type="Self.DetalleProducto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleProducto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIDCargo">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="0..1" />
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="IDCargo" />
+            </Principal>
+            <Dependent Role="EMPLEADOS">
+              <PropertyRef Name="IDCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdCategoria">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdCliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdcompra">
+          <End Role="compras" Type="Self.compras" Multiplicity="0..1" />
+          <End Role="detallecompras" Type="Self.detallecompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compras">
+              <PropertyRef Name="Idcompra" />
+            </Principal>
+            <Dependent Role="detallecompras">
+              <PropertyRef Name="IdDetalleCompras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdEmpleados">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID_Empleados" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdEmpleados" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdFactura">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="0..1" />
+          <End Role="detallefactura" Type="Self.detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="detallefactura">
+              <PropertyRef Name="IdDetalleFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdProducto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="detallefactura" Type="Self.detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="detallefactura">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdProducto_compras">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="detallecompras" Type="Self.detallecompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="detallecompras">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdProveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="DetalleProducto" Type="Self.DetalleProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="DetalleProducto">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdTipoFactura">
+          <End Role="TipoFactura" Type="Self.TipoFactura" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoFactura">
+              <PropertyRef Name="IdTipoFactura" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdTipoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PROLINSAModelStoreContainer">
+          <EntitySet Name="ActividadProveedor" EntityType="Self.ActividadProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="compras" EntityType="Self.compras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detallecompras" EntityType="Self.detallecompras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detallefactura" EntityType="Self.detallefactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleProducto" EntityType="Self.DetalleProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoFactura" EntityType="Self.TipoFactura" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKCompra" Association="Self.FKCompra">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdActividad" Association="Self.FKIdActividad">
+            <End Role="ActividadProveedor" EntitySet="ActividadProveedor" />
+            <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdArticulo" Association="Self.FKIdArticulo">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleProducto" EntitySet="DetalleProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FKIDCargo" Association="Self.FKIDCargo">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdCategoria" Association="Self.FKIdCategoria">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdCliente" Association="Self.FKIdCliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdcompra" Association="Self.FKIdcompra">
+            <End Role="compras" EntitySet="compras" />
+            <End Role="detallecompras" EntitySet="detallecompras" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdEmpleados" Association="Self.FKIdEmpleados">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdFactura" Association="Self.FKIdFactura">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="detallefactura" EntitySet="detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdProducto" Association="Self.FKIdProducto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="detallefactura" EntitySet="detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdProducto_compras" Association="Self.FKIdProducto_compras">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="detallecompras" EntitySet="detallecompras" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdProveedor" Association="Self.FKIdProveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="DetalleProducto" EntitySet="DetalleProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdTipoFactura" Association="Self.FKIdTipoFactura">
+            <End Role="TipoFactura" EntitySet="TipoFactura" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PROLINSAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActividadProveedor">
+          <Key>
+            <PropertyRef Name="IdActividad" />
+          </Key>
+          <Property Name="IdActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NoActivo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FKIdActividad" FromRole="ActividadProveedor" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="IDCargo" />
+          </Key>
+          <Property Name="IDCargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLEADOS" Relationship="Self.FKIDCargo" FromRole="Cargos" ToRole="EMPLEADOS" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion_Categoria" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FKIdCategoria" FromRole="Categorias" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCelular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Facturas" Relationship="PROLINSAModel.FKIdCliente" FromRole="Clientes" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="DetalleProducto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="NombreProveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PaisProveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoProveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="FechaCompra" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FKIdArticulo" FromRole="DetalleProducto" ToRole="Producto" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FKIdProveedor" FromRole="DetalleProducto" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="EMPLEADOS">
+          <Key>
+            <PropertyRef Name="ID_Empleados" />
+          </Key>
+          <Property Name="ID_Empleados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido_Empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula_Empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion_Empleado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IDCargo" Type="Int32" />
+          <Property Name="Salario_Empleado" Type="Decimal" Precision="14" Scale="4" />
+          <NavigationProperty Name="Cargos" Relationship="Self.FKIDCargo" FromRole="EMPLEADOS" ToRole="Cargos" />
+          <NavigationProperty Name="Facturas" Relationship="PROLINSAModel.FKIdEmpleados" FromRole="EMPLEADOS" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="NombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Precio_Compra" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="Precio_Venta" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FKIdCategoria" FromRole="Producto" ToRole="Categorias" />
+          <NavigationProperty Name="DetalleProducto" Relationship="Self.FKIdArticulo" FromRole="Producto" ToRole="DetalleProducto" />
+          <NavigationProperty Name="detallecompras" Relationship="PROLINSAModel.FKIdProducto_compras" FromRole="Producto" ToRole="detallecompras" />
+          <NavigationProperty Name="detallefactura" Relationship="PROLINSAModel.FKIdProducto" FromRole="Producto" ToRole="detallefactura" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreProveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionProveedor" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PaisProveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoProveedor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdActividad" Type="Int32" />
+          <NavigationProperty Name="ActividadProveedor" Relationship="Self.FKIdActividad" FromRole="Proveedores" ToRole="ActividadProveedor" />
+          <NavigationProperty Name="DetalleProducto" Relationship="Self.FKIdProveedor" FromRole="Proveedores" ToRole="DetalleProducto" />
+          <NavigationProperty Name="compras" Relationship="PROLINSAModel.FKCompra" FromRole="Proveedores" ToRole="compras" />
+        </EntityType>
+        <EntityType Name="TipoFactura">
+          <Key>
+            <PropertyRef Name="IdTipoFactura" />
+          </Key>
+          <Property Name="IdTipoFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Factura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Cotizacion" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Facturas" Relationship="PROLINSAModel.FKIdTipoFactura" FromRole="TipoFactura" ToRole="Facturas" />
+        </EntityType>
+        <Association Name="FKIdActividad">
+          <End Role="ActividadProveedor" Type="Self.ActividadProveedor" Multiplicity="0..1" />
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadProveedor">
+              <PropertyRef Name="IdActividad" />
+            </Principal>
+            <Dependent Role="Proveedores">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIDCargo">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="0..1" />
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargos">
+              <PropertyRef Name="IDCargo" />
+            </Principal>
+            <Dependent Role="EMPLEADOS">
+              <PropertyRef Name="IDCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdCategoria">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdArticulo">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleProducto" Type="Self.DetalleProducto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleProducto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdProveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="DetalleProducto" Type="Self.DetalleProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="DetalleProducto">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PROLINSAEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActividadProveedor" EntityType="Self.ActividadProveedor" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="DetalleProducto" EntityType="Self.DetalleProducto" />
+          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="TipoFactura" EntityType="Self.TipoFactura" />
+          <AssociationSet Name="FKIdActividad" Association="Self.FKIdActividad">
+            <End Role="ActividadProveedor" EntitySet="ActividadProveedor" />
+            <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FKIDCargo" Association="Self.FKIDCargo">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdCategoria" Association="Self.FKIdCategoria">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdArticulo" Association="Self.FKIdArticulo">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleProducto" EntitySet="DetalleProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdProveedor" Association="Self.FKIdProveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="DetalleProducto" EntitySet="DetalleProducto" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="PROLINSAModel.sysdiagrams" />
+          <EntitySet Name="compras" EntityType="PROLINSAModel.compras" />
+          <EntitySet Name="detallecompras" EntityType="PROLINSAModel.detallecompras" />
+          <AssociationSet Name="FKCompra" Association="PROLINSAModel.FKCompra">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="compras" EntitySet="compras" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdcompra" Association="PROLINSAModel.FKIdcompra">
+            <End Role="compras" EntitySet="compras" />
+            <End Role="detallecompras" EntitySet="detallecompras" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdProducto_compras" Association="PROLINSAModel.FKIdProducto_compras">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="detallecompras" EntitySet="detallecompras" />
+          </AssociationSet>
+          <EntitySet Name="detallefactura" EntityType="PROLINSAModel.detallefactura" />
+          <EntitySet Name="Facturas" EntityType="PROLINSAModel.Facturas" />
+          <AssociationSet Name="FKIdCliente" Association="PROLINSAModel.FKIdCliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdFactura" Association="PROLINSAModel.FKIdFactura">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="detallefactura" EntitySet="detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdProducto" Association="PROLINSAModel.FKIdProducto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="detallefactura" EntitySet="detallefactura" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdEmpleados" Association="PROLINSAModel.FKIdEmpleados">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FKIdTipoFactura" Association="PROLINSAModel.FKIdTipoFactura">
+            <End Role="TipoFactura" EntitySet="TipoFactura" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="compras">
+          <Key>
+            <PropertyRef Name="Idcompra" />
+          </Key>
+          <Property Name="Idcompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idproveedor" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Proveedores" Relationship="PROLINSAModel.FKCompra" FromRole="compras" ToRole="Proveedores" />
+          <NavigationProperty Name="detallecompras" Relationship="PROLINSAModel.FKIdcompra" FromRole="compras" ToRole="detallecompras" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="14" Scale="4" />
+        </EntityType>
+        <EntityType Name="detallecompras">
+          <Key>
+            <PropertyRef Name="Idcompra" />
+          </Key>
+          <Property Name="Idcompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDetalleCompras" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Subtotal" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="14" Scale="4" />
+          <NavigationProperty Name="compras" Relationship="PROLINSAModel.FKIdcompra" FromRole="detallecompras" ToRole="compras" />
+          <NavigationProperty Name="Producto" Relationship="PROLINSAModel.FKIdProducto_compras" FromRole="detallecompras" ToRole="Producto" />
+        </EntityType>
+        <Association Name="FKCompra">
+          <End Type="PROLINSAModel.Proveedores" Role="Proveedores" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.compras" Role="compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="compras">
+              <PropertyRef Name="Idproveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdcompra">
+          <End Type="PROLINSAModel.compras" Role="compras" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.detallecompras" Role="detallecompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compras">
+              <PropertyRef Name="Idcompra" />
+            </Principal>
+            <Dependent Role="detallecompras">
+              <PropertyRef Name="IdDetalleCompras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdProducto_compras">
+          <End Type="PROLINSAModel.Producto" Role="Producto" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.detallecompras" Role="detallecompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="detallecompras">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="detallefactura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDetalleFactura" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Subtotal" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="Totalporfactura" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="Facturas" Relationship="PROLINSAModel.FKIdFactura" FromRole="detallefactura" ToRole="Facturas" />
+          <NavigationProperty Name="Producto" Relationship="PROLINSAModel.FKIdProducto" FromRole="detallefactura" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpleados" Type="Int32" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdTipoFactura" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Clientes" Relationship="PROLINSAModel.FKIdCliente" FromRole="Facturas" ToRole="Clientes" />
+          <NavigationProperty Name="detallefactura" Relationship="PROLINSAModel.FKIdFactura" FromRole="Facturas" ToRole="detallefactura" />
+          <NavigationProperty Name="EMPLEADOS" Relationship="PROLINSAModel.FKIdEmpleados" FromRole="Facturas" ToRole="EMPLEADOS" />
+          <NavigationProperty Name="TipoFactura" Relationship="PROLINSAModel.FKIdTipoFactura" FromRole="Facturas" ToRole="TipoFactura" />
+        </EntityType>
+        <Association Name="FKIdCliente">
+          <End Type="PROLINSAModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdFactura">
+          <End Type="PROLINSAModel.Facturas" Role="Facturas" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.detallefactura" Role="detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="detallefactura">
+              <PropertyRef Name="IdDetalleFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdProducto">
+          <End Type="PROLINSAModel.Producto" Role="Producto" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.detallefactura" Role="detallefactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="detallefactura">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdEmpleados">
+          <End Type="PROLINSAModel.EMPLEADOS" Role="EMPLEADOS" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID_Empleados" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdEmpleados" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKIdTipoFactura">
+          <End Type="PROLINSAModel.TipoFactura" Role="TipoFactura" Multiplicity="0..1" />
+          <End Type="PROLINSAModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoFactura">
+              <PropertyRef Name="IdTipoFactura" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdTipoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PROLINSAModelStoreContainer" CdmEntityContainer="PROLINSAEntities1">
+          <EntitySetMapping Name="ActividadProveedor">
+            <EntityTypeMapping TypeName="PROLINSAModel.ActividadProveedor">
+              <MappingFragment StoreEntitySet="ActividadProveedor">
+                <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NoActivo" ColumnName="NoActivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="PROLINSAModel.Cargos">
+              <MappingFragment StoreEntitySet="Cargos">
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="PROLINSAModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Nombre_Categoria" ColumnName="Nombre_Categoria" />
+                <ScalarProperty Name="Descripcion_Categoria" ColumnName="Descripcion_Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="PROLINSAModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="ApellidoCliente" ColumnName="ApellidoCliente" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="NumeroCelular" ColumnName="NumeroCelular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleProducto">
+            <EntityTypeMapping TypeName="PROLINSAModel.DetalleProducto">
+              <MappingFragment StoreEntitySet="DetalleProducto">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+                <ScalarProperty Name="PaisProveedor" ColumnName="PaisProveedor" />
+                <ScalarProperty Name="TelefonoProveedor" ColumnName="TelefonoProveedor" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADOS">
+            <EntityTypeMapping TypeName="PROLINSAModel.EMPLEADOS">
+              <MappingFragment StoreEntitySet="EMPLEADOS">
+                <ScalarProperty Name="ID_Empleados" ColumnName="ID_Empleados" />
+                <ScalarProperty Name="Nombre_Empleado" ColumnName="Nombre_Empleado" />
+                <ScalarProperty Name="Apellido_Empleado" ColumnName="Apellido_Empleado" />
+                <ScalarProperty Name="Cedula_Empleado" ColumnName="Cedula_Empleado" />
+                <ScalarProperty Name="Direccion_Empleado" ColumnName="Direccion_Empleado" />
+                <ScalarProperty Name="IDCargo" ColumnName="IDCargo" />
+                <ScalarProperty Name="Salario_Empleado" ColumnName="Salario_Empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="PROLINSAModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio_Compra" ColumnName="Precio_Compra" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="PROLINSAModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+                <ScalarProperty Name="DireccionProveedor" ColumnName="DireccionProveedor" />
+                <ScalarProperty Name="PaisProveedor" ColumnName="PaisProveedor" />
+                <ScalarProperty Name="TelefonoProveedor" ColumnName="TelefonoProveedor" />
+                <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoFactura">
+            <EntityTypeMapping TypeName="PROLINSAModel.TipoFactura">
+              <MappingFragment StoreEntitySet="TipoFactura">
+                <ScalarProperty Name="IdTipoFactura" ColumnName="IdTipoFactura" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Cotizacion" ColumnName="Cotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PROLINSAModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compras">
+            <EntityTypeMapping TypeName="PROLINSAModel.compras">
+              <MappingFragment StoreEntitySet="compras">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Idproveedor" ColumnName="Idproveedor" />
+                <ScalarProperty Name="Idcompra" ColumnName="Idcompra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detallecompras">
+            <EntityTypeMapping TypeName="PROLINSAModel.detallecompras">
+              <MappingFragment StoreEntitySet="detallecompras">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdDetalleCompras" ColumnName="IdDetalleCompras" />
+                <ScalarProperty Name="Idcompra" ColumnName="Idcompra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detallefactura">
+            <EntityTypeMapping TypeName="PROLINSAModel.detallefactura">
+              <MappingFragment StoreEntitySet="detallefactura">
+                <ScalarProperty Name="Totalporfactura" ColumnName="Totalporfactura" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdDetalleFactura" ColumnName="IdDetalleFactura" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="PROLINSAModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdTipoFactura" ColumnName="IdTipoFactura" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

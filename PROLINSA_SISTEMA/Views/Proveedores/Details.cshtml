@@ -1,0 +1,59 @@
+﻿@model PROLINSA_SISTEMA.Proveedores
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DireccionProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DireccionProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaisProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaisProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonoProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonoProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActividadProveedor.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActividadProveedor.Activo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdProveedor }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Volver", "Index", new { }, new { @class = "btn btn-secondary"})
+</p>

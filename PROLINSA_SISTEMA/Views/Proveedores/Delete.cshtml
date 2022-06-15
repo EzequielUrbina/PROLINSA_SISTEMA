@@ -1,0 +1,66 @@
+﻿@model PROLINSA_SISTEMA.Proveedores
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro de que quieres eliminar este?</h3>
+
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DireccionProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DireccionProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaisProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaisProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonoProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonoProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActividadProveedor.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActividadProveedor.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Volver", "Index", new { }, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

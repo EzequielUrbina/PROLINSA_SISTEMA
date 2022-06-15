@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PROLINSA_SISTEMA.EMPLEADOS>
+
+@{
+    ViewBag.Title = "Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido_Empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula_Empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion_Empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario_Empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargos.Cargo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_Empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido_Empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula_Empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion_Empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario_Empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargos.Cargo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_Empleados }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_Empleados }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_Empleados })
+        </td>
+    </tr>
+}
+
+</table>

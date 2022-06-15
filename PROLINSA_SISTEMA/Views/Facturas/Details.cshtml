@@ -1,0 +1,51 @@
+﻿@model PROLINSA_SISTEMA.Facturas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Facturas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.NombreCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.NombreCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMPLEADOS.Nombre_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMPLEADOS.Nombre_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoFactura.Factura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoFactura.Factura)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFactura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

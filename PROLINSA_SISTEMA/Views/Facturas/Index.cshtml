@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PROLINSA_SISTEMA.Facturas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientes.NombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLEADOS.Nombre_Empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoFactura.Factura)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.NombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMPLEADOS.Nombre_Empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoFactura.Factura)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdFactura }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFactura }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFactura })
+        </td>
+    </tr>
+}
+
+</table>

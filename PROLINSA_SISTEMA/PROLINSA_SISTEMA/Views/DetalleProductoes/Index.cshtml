@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PROLINSA_SISTEMA.DetalleProducto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaisProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelefonoProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proveedores.NombreProveedor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaisProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelefonoProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.NombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proveedores.NombreProveedor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdProducto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdProducto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdProducto })
+        </td>
+    </tr>
+}
+
+</table>

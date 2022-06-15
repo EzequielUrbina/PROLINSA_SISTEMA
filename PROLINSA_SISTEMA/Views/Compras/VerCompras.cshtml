@@ -1,0 +1,68 @@
+﻿@model List<PROLINSA_SISTEMA.compras>
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Compras</h2>
+<p>
+    @Html.ActionLink("Nueva compra", "Compras", new { }, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-bordered" id="orden">
+    <thead>
+        <tr>
+            <th style="text-align:center"></th>
+            <th style="text-align:center">Numero Compra</th>
+            <th style="text-align:center">Proveedor</th>
+            <th style="text-align:center">Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center"> <img src="~/Content/imagenes/anadir.png" orderId="@item.Idcompra" /> </td>
+                <td style="text-align:center">@item.Idcompra</td>
+                <td style="text-align:center">@item.Proveedores.NombreProveedor</td>
+                <td style="text-align:center">@item.Fecha.ToString("dd/MM/yyyy")</td>
+            </tr>
+
+            <tr id="fila-@item.Idcompra" style="display:none">
+                <td></td>
+                <td colspan="5">
+                    @Html.Action("_Detalleparcialcompras", new { Facturaid = item.Idcompra })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(function () {
+            $("#orden tbody img").click(function () {
+            var orderId = $(this).attr("orderId");
+            var fila = $("#fila-" + orderId);
+
+            if (fila.css("display") == "none")
+            {
+                fila.css("display", "table-row");
+                $(this).attr("src", "@Url.Content("~/Content/imagenes/quitar.png")");
+            } else
+            {
+                fila.css("display", "none");
+                $(this).attr("src", "@Url.Content("~/Content/imagenes/anadir.png")");
+            }
+            });
+        });
+    </script>
+
+
+}
+
+

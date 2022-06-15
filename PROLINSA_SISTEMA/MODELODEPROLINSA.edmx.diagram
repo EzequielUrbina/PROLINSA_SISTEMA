@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a10b8871fa364843a177a72dd1742c60" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="PROLINSAModel.ActividadProveedor" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.Cargos" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.Categorias" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.Clientes" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.DetalleProducto" Width="1.5" PointX="10.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.EMPLEADOS" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.Producto" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.Proveedores" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROLINSAModel.TipoFactura" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="PROLINSAModel.FKIdActividad" ManuallyRouted="false" />
+        <AssociationConnector Association="PROLINSAModel.FKIDCargo" ManuallyRouted="false" />
+        <AssociationConnector Association="PROLINSAModel.FKIdCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="PROLINSAModel.FKIdArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="PROLINSAModel.FKIdProveedor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PROLINSAModel.sysdiagrams" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PROLINSAModel.compras" Width="1.5" PointX="10.25" PointY="5.375" />
+        <EntityTypeShape EntityType="PROLINSAModel.detallecompras" Width="1.5" PointX="12.5" PointY="7.625" />
+        <AssociationConnector Association="PROLINSAModel.FKCompra" />
+        <AssociationConnector Association="PROLINSAModel.FKIdcompra" />
+        <AssociationConnector Association="PROLINSAModel.FKIdProducto_compras" />
+        <EntityTypeShape EntityType="PROLINSAModel.detallefactura" Width="1.5" PointX="7.5" PointY="10.75" />
+        <EntityTypeShape EntityType="PROLINSAModel.Facturas" Width="1.5" PointX="5.25" PointY="9.875" />
+        <AssociationConnector Association="PROLINSAModel.FKIdCliente" />
+        <AssociationConnector Association="PROLINSAModel.FKIdFactura" />
+        <AssociationConnector Association="PROLINSAModel.FKIdProducto" />
+        <AssociationConnector Association="PROLINSAModel.FKIdEmpleados" />
+        <AssociationConnector Association="PROLINSAModel.FKIdTipoFactura" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

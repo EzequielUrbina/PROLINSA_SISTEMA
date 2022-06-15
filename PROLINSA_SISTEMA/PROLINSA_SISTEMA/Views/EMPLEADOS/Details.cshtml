@@ -1,0 +1,67 @@
+﻿@model PROLINSA_SISTEMA.EMPLEADOS
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario_Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario_Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargos.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargos.Cargo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_Empleados }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

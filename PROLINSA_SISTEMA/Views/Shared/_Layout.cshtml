@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PROLINSA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            </button>
+            <a class="navbar-brand" href="/">Prolinsa</a>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Cargos", "Index", "Cargos", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Categotias", "Index", "Categorias", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Clientes", "Index", "Clientes", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Empleados", "Index", "EMPLEADOS", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Productos", "Index", "Productoes", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Proveedores", "Index", "Proveedores", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Generar Venta", "VerFacturas", "Venta", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Generar Compras", "VerCompras", "Compras", null, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <hr />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - PROLINSA</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

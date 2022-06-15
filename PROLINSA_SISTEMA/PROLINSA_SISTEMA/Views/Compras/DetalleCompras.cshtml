@@ -1,0 +1,56 @@
+﻿@model PROLINSA_SISTEMA.compras
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Facturas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Idcompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idcompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proveedores.NombreProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proveedores.NombreProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+    </dl>
+
+
+
+
+
+
+
+
+</div>
+<p>
+    @Html.ActionLink("Volver", "VerCompras")
+</p>
+
+
+
+
+

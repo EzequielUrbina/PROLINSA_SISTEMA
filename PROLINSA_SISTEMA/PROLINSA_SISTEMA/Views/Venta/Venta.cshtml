@@ -1,0 +1,101 @@
+﻿@model PROLINSA_SISTEMA.Models.OrderView
+@{
+    ViewBag.Title = "Venta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nueva Venta</h2>
+@using (Html.BeginForm("Venta", "Venta",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+ <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDEMPLEADO, "Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Empleados", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDEMPLEADO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCLIENTE, "Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdCliente", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDTIPOFACTURA, "Factura / Cotización", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdTipoFactura", null, htmlAttributes: new { @class = "form-control" })            </div>
+        </div>
+
+     <div class="form-group">
+            @Html.LabelFor(model => model.FechaA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FechaA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Agregar Producto", "AddProduct", new { }, new { @class="btn btn-default"}) |
+            <input type="submit" value="Crear" class="btn btn-default" />
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulos.NombreProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulos.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulos.Precio_Venta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+
+        @for (int i = 0; i< Model.idproductos.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.idproductos[i].NombreProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.idproductos[i].CANTIDAD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.idproductos[i].Precio_Venta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.idproductos[i].TOTAL)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Volver", "VerFacturas", "Venta")
+</div>

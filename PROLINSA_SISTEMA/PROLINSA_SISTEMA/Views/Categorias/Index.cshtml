@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PROLINSA_SISTEMA.Categorias>
+
+@{
+    ViewBag.Title = "Categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Categorias</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion_Categoria)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion_Categoria)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCategoria }) |
+            @Html.ActionLink("ver detalle", "Details", new { id=item.IdCategoria }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCategoria })
+        </td>
+    </tr>
+}
+
+</table>

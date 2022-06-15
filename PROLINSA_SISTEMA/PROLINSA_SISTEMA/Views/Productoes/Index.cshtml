@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PROLINSA_SISTEMA.Producto>
+
+@{
+    ViewBag.Title = "Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio_Venta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorias.Nombre_Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetalleProducto.NombreProveedor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio_Venta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorias.Nombre_Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetalleProducto.NombreProveedor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdProducto }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdProducto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdProducto })
+        </td>
+    </tr>
+}
+
+</table>

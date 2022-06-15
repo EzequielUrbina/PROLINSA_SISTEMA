@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PROLINSA_SISTEMA.Proveedores>
+
+@{
+    ViewBag.Title = "Proveedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Proveedores</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Create", new { }, new { @class = "btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DireccionProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaisProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelefonoProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActividadProveedor.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td width="210">
+            @Html.DisplayFor(modelItem => item.NombreProveedor)
+        </td>
+        <td width="210">
+            @Html.DisplayFor(modelItem => item.DireccionProveedor)
+        </td>
+        <td width="100">
+            @Html.DisplayFor(modelItem => item.PaisProveedor)
+        </td>
+        <td width="100">
+            @Html.DisplayFor(modelItem => item.TelefonoProveedor)
+        </td>
+        <td width="100">
+            @Html.DisplayFor(modelItem => item.ActividadProveedor.Activo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdProveedor }, new { @class = "btn btn-secondary" })
+            @Html.ActionLink("Detalles", "Details", new { id=item.IdProveedor }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdProveedor }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
