@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.Entity;
 using PROLINSA_SISTEMA;
 using System.Data.SqlClient;
+using Rotativa;
 
 namespace PROLINSA_SISTEMA.Controllers
 {
@@ -220,6 +221,14 @@ namespace PROLINSA_SISTEMA.Controllers
             ViewBag.tipoo = tipo;
             return View(detalle);
         }
+
+
+        public ActionResult ImprimirFactura(int Facturaid, DateTime fecha, decimal total, string cliente, string empleado, string tipo)
+        {
+            return new ActionAsPdf("_VentasFacturacion", new { Facturaid, fecha, total, cliente, empleado, tipo }) { FileName = "Test.pdf" };
+        }
+
+
 
     }
 }

@@ -45,6 +45,16 @@
                    empleado = item.EMPLEADOS.Nombre_Empleado,
                    tipo = item.TipoFactura.Facturas
                }, new { @class = "btn btn-secondary" })
+
+                    @Html.ActionLink("Imprimir", "ImprimirFactura", new
+               {
+                   Facturaid = item.IdFactura,
+                   fecha = item.Fecha,
+                   total = item.Total,
+                   cliente = item.Clientes.NombreCliente,
+                   empleado = item.EMPLEADOS.Nombre_Empleado,
+                   tipo = item.TipoFactura.Facturas
+               }, new { @class = "btn btn-secondary" })
                 </td>
             </tr>
 
