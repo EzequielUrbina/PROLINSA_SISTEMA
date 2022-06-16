@@ -444,6 +444,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Venta\_VentasFacturacion.cshtml" />
     <Content Include="Views\Venta\_Detalleparcial.cshtml" />
+    <Content Include="Views\Venta\_VentasDescargar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
