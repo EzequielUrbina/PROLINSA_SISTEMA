@@ -1,11 +1,12 @@
-# PROLINSA_SISTEMA
+# PROLINSA
+Prolinsa es una empresa ubicada en managua, Nicaragua dedicado a dar soluciones integrales a empresas e instituciones de la sociedad.
+vendiendo toda clase de productos y servicios.
 
-PROLINSA ES UNA EMPRESA UBICADA EN MANAGUA,
-NICARAGUA DEDICADO A DAR SOLICIONES INTEGRALES A EMPRESAS E INTITUSIONES DE LA SOCIEDAD. 
-VENDIENDO TODA CLASE DE PRODUCTOS Y SERVICIOS.
+Este sistema fue desarrollando con la finalidad de brindar una solución integrada donde se puedan almacenar y consultar la siguiente información: ventas, compras, informes e inventario.
 
-ESTE SISTEMA FUE DESARROLLANDO CON LA FINALIDAD DE BRINDAR UNA SOLUCIÓN INTEGRADA DONDE SE PUEDAN ALMACENAR Y CONSULTAR LA SIGUIENTE INFORMACION:
-VENTAS 
-COMPRAS
-INFORMES
-INVENTARIO 
+# :fa-database: BASE DE DATOS
+![](https://i.ibb.co/QFwBvP7/BD-PROLINSA.jpg)
+
+# :fa-user: INTERFAZ
+![](https://i.ibb.co/nLtMpR3/image.png)
+
