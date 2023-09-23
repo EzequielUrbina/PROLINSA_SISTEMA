@@ -11,8 +11,7 @@ namespace PROLINSA_SISTEMA
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class EMPLEADOS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +21,11 @@ namespace PROLINSA_SISTEMA
         }
     
         public int ID_Empleados { get; set; }
-        [Display (Name ="Nombre")]
         public string Nombre_Empleado { get; set; }
-        [Display(Name = "Apellido")]
         public string Apellido_Empleado { get; set; }
-        [Display(Name = "Cedula")]
         public string Cedula_Empleado { get; set; }
-        [Display(Name = "Dirección")]
         public string Direccion_Empleado { get; set; }
-        [Display(Name = "Cargo")]
         public Nullable<int> IDCargo { get; set; }
-        [Display(Name = "Salario")]
         public Nullable<decimal> Salario_Empleado { get; set; }
     
         public virtual Cargos Cargos { get; set; }

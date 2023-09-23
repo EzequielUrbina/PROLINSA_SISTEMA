@@ -209,10 +209,13 @@
     <Compile Include="Proveedores.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="SP_BusquedaProveedor_Result.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoFactura.cs">
+      <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIO.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
   </ItemGroup>

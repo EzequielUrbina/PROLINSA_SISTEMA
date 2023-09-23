@@ -19,7 +19,7 @@ namespace PROLINSA_SISTEMA
         {
             this.EMPLEADOS = new HashSet<EMPLEADOS>();
         }
-        
+    
         public int IDCargo { get; set; }
         public string Cargo { get; set; }
         public string Descripcion { get; set; }

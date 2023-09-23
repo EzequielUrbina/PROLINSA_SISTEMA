@@ -10,14 +10,12 @@
 namespace PROLINSA_SISTEMA
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class SP_BusquedaProveedor_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string NombreProveedor { get; set; }
+        public string DireccionProveedor { get; set; }
+        public string PaisProveedor { get; set; }
+        public string TelefonoProveedor { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace PROLINSA_SISTEMA
         }
     
         public int IdProducto { get; set; }
+        public Nullable<int> Codigo { get; set; }
         public string NombreProducto { get; set; }
         public string Descripcion { get; set; }
         public Nullable<decimal> Precio_Compra { get; set; }

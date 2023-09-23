@@ -18,6 +18,7 @@ namespace PROLINSA_SISTEMA.Controllers
         private PROLINSAEntities1 db = new PROLINSAEntities1(); //Declaramos la coneccion a la base de datos para poder usarla
         SqlConnection conexion = new SqlConnection("server=PC ; database=PROLINSA ; integrated security = true");
 
+
         // GET: Compras
         public ActionResult Compras()
         {

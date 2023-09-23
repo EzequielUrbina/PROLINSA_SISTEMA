@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a10b8871fa364843a177a72dd1742c60" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="a10b8871fa364843a177a72dd1742c60" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="PROLINSAModel.ActividadProveedor" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PROLINSAModel.Cargos" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PROLINSAModel.Categorias" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
@@ -19,7 +19,6 @@
         <AssociationConnector Association="PROLINSAModel.FKIdCategoria" ManuallyRouted="false" />
         <AssociationConnector Association="PROLINSAModel.FKIdArticulo" ManuallyRouted="false" />
         <AssociationConnector Association="PROLINSAModel.FKIdProveedor" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PROLINSAModel.sysdiagrams" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="PROLINSAModel.compras" Width="1.5" PointX="10.25" PointY="5.375" />
         <EntityTypeShape EntityType="PROLINSAModel.detallecompras" Width="1.5" PointX="12.5" PointY="7.625" />
         <AssociationConnector Association="PROLINSAModel.FKCompra" />
@@ -32,6 +31,7 @@
         <AssociationConnector Association="PROLINSAModel.FKIdProducto" />
         <AssociationConnector Association="PROLINSAModel.FKIdEmpleados" />
         <AssociationConnector Association="PROLINSAModel.FKIdTipoFactura" />
+        <EntityTypeShape EntityType="PROLINSAModel.USUARIO" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

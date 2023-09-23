@@ -49,7 +49,7 @@ namespace PROLINSA_SISTEMA.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProducto,NombreProducto,Descripcion,Precio_Compra,Precio_Venta,Stock,IdCategoria")] Producto producto)
+        public ActionResult Create([Bind(Include = "Codigo,NombreProducto,Descripcion,Precio_Compra,Precio_Venta,Stock,IdCategoria")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace PROLINSA_SISTEMA.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProducto,NombreProducto,Descripcion,Precio_Compra,Precio_Venta,Stock,IdCategoria")] Producto producto)
+        public ActionResult Edit([Bind(Include = "IdProducto,Codigo,NombreProducto,Descripcion,Precio_Compra,Precio_Venta,Stock,IdCategoria")] Producto producto)
         {
             if (ModelState.IsValid)
             {
