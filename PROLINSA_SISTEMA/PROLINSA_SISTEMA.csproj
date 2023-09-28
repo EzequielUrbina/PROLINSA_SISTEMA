@@ -240,7 +240,8 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\imagenes\anadir.png" />
-    <Content Include="Content\imagenes\prolinsa.png" />
+    <Content Include="Content\imagenes\Logo500px.png" />
+    <Content Include="Content\imagenes\ProlinsaLogo.png" />
     <Content Include="Content\imagenes\quitar.png" />
     <Content Include="Content\Login\Login.css" />
     <Content Include="Content\Login\PagError.css" />
