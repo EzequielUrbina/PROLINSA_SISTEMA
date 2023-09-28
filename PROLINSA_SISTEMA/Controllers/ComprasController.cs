@@ -11,8 +11,12 @@ using System.Data.Entity;
 using PROLINSA_SISTEMA;
 using System.Data.SqlClient;
 
+using PROLINSA_SISTEMA.Permisos;
+
+
 namespace PROLINSA_SISTEMA.Controllers
 {
+    [ValidarSesion]
     public class ComprasController : Controller
     {
         private PROLINSAEntities1 db = new PROLINSAEntities1(); //Declaramos la coneccion a la base de datos para poder usarla

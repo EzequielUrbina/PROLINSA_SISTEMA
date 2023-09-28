@@ -8,8 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using PROLINSA_SISTEMA;
 
+using PROLINSA_SISTEMA.Permisos;
+
 namespace PROLINSA_SISTEMA.Controllers
 {
+    [ValidarSesion]
     public class DetalleProductoesController : Controller
     {
         private PROLINSAEntities1 db = new PROLINSAEntities1();

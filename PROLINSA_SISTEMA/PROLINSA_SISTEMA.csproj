@@ -150,6 +150,7 @@
     <Compile Include="compras.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
@@ -172,7 +173,6 @@
     <Compile Include="DetalleProducto.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
-    <Compile Include="displayAttribute.cs" />
     <Compile Include="EMPLEADOS.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
@@ -197,11 +197,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MODELODEPROLINSA.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Busqueda.cs" />
     <Compile Include="Models\ComprasView.cs" />
     <Compile Include="Models\detallecompraas.cs" />
     <Compile Include="Models\FacturaDetalle.cs" />
     <Compile Include="Models\FacturaMaestro.cs" />
     <Compile Include="Models\OrderView.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Permisos\ValidarSesionAttribute.cs" />
     <Compile Include="Producto.cs">
       <DependentUpon>MODELODEPROLINSA.tt</DependentUpon>
     </Compile>
@@ -448,6 +451,7 @@
     <Content Include="Views\Venta\_VentasFacturacion.cshtml" />
     <Content Include="Views\Venta\_Detalleparcial.cshtml" />
     <Content Include="Views\Venta\_VentasDescargar.cshtml" />
+    <Content Include="Views\Acceso\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
