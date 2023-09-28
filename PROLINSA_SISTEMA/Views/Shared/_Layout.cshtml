@@ -5,17 +5,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - PROLINSA</title>
-    @Styles.Render("~/Content/css")
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" /> @*Referencia interna de bootstrap*@
+
+
+    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container">
-            <button class="navbar-toggler-icon type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">PROLINSA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="/">Prolinsa</a>
-            <div class="navbar-collapse collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">@Html.ActionLink("Cargos", "Index", "Cargos", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Categotias", "Index", "Categorias", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Clientes", "Index", "Clientes", null, new { @class = "nav-link" })</li>
@@ -34,6 +40,8 @@
     <hr />
 
     <div class="container body-content">
+        <hr />
+        <hr />
         @RenderBody()
         <hr />
         <footer>
@@ -41,8 +49,10 @@
         </footer>
     </div>
 
+    <script src="~/Scripts/bootstrap.min.js"></script> @*Referencia interna de bootstrap*@
+
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
