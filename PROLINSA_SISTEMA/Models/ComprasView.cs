@@ -9,8 +9,7 @@ namespace PROLINSA_SISTEMA.Models
     public class ComprasView
     {
 
-        [Required]
-        [Range(1, 90000)]
+        [Required(ErrorMessage = "Por favor, selecciona un proveedor.")]
         public List<Proveedores> IDPROVEEDOR { set; get; }
 
 
@@ -20,6 +19,7 @@ namespace PROLINSA_SISTEMA.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime FechaA { get; set; }
 
+        [Required(ErrorMessage = "Por favor, selecciona un producto.")]
         public List<detallecompraas> IdProducto { set; get; }
         public int CANTIDAD { set; get; }
         public FacturaDetalle Subtotal { set; get; }

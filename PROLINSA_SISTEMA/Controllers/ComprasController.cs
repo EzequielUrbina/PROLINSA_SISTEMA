@@ -20,7 +20,7 @@ namespace PROLINSA_SISTEMA.Controllers
     public class ComprasController : Controller
     {
         private PROLINSAEntities1 db = new PROLINSAEntities1(); //Declaramos la coneccion a la base de datos para poder usarla
-        SqlConnection conexion = new SqlConnection("server=PC ; database=PROLINSA ; integrated security = true");
+        SqlConnection conexion = new SqlConnection("server=LAPTOP-V4474JBK ; database=PROLINSA ; integrated security = true");
 
 
         // GET: Compras
@@ -50,45 +50,76 @@ namespace PROLINSA_SISTEMA.Controllers
         {
             comprasView = Session["OrderView"] as ComprasView;
             int idproveedor = int.Parse(Request["IDPROVEEDOR"]);
-            DateTime fechacompra = Convert.ToDateTime(Request["FechaA"]);
+
+            DateTime fechacompra;
+            string fechaAString = Request["FechaA"];
+            fechacompra = Convert.ToDateTime(fechaAString);
+
+            if (comprasView.IdProducto == null || comprasView.IdProducto.Count == 0)
+            {
+                // Código a ejecutar si IdProducto es nulo o su conteo es cero
+                ViewBag.carritovacio = "La lista de compra está vacía. Agrega productos antes de guardar la compra.";
+
+                return View("Error");
+            }
 
             compras newcompras = new compras
             {
                 Idproveedor = idproveedor,
                 Fecha = fechacompra
             };
+
             db.compras.Add(newcompras);
             db.SaveChanges();
 
             int ultimoidcompra = db.compras.ToList().Select(o => o.Idcompra).Max();//sacamos el ultimo id de la tabla compras
 
+
             Nullable<decimal> totalneto = 0;
 
-            foreach (detallecompraas item in comprasView.IdProducto)
+            if (comprasView.IdProducto != null && comprasView.IdProducto.Count > 0)
             {
-                totalneto = totalneto + item.TOTAL; //Total de una facutura se suman todos los subtotales
-
-                var detail = new detallecompras()
+                // Código cuando la lista no está vacía
+                foreach (detallecompraas item in comprasView.IdProducto)
                 {
-                    IdDetalleCompras = ultimoidcompra,
-                    IdProducto = item.IdProducto,
-                    Cantidad = item.CANTIDAD,
-                    Subtotal = item.Precio_Compra,
-                    Total = item.TOTAL
-                };
-                db.detallecompras.Add(detail);
+                    totalneto = totalneto + item.TOTAL; //Total de una facutura se suman todos los subtotales
 
-                conexion.Open();//abrimos la coneccion a la base de datos
-                SqlCommand comando2 = new SqlCommand("update Producto set Stock = Producto.Stock + @itemcantidadcomprada where IdProducto = @idproducto", conexion); //declaramos una variable tipo sqlcommand para hacer un update a la ultima factura realizada con el total neto
-                comando2.Parameters.Add("@itemcantidadcomprada", SqlDbType.Int); //declaramos un parametro para la cantidad de articulos vendido
-                comando2.Parameters.Add("@idproducto", SqlDbType.Int); //declaramos un parametro para saber cual fue el producto vendido
+                    var detail = new detallecompras()
+                    {
+                        IdDetalleCompras = ultimoidcompra,
+                        IdProducto = item.IdProducto,
+                        Cantidad = item.CANTIDAD,
+                        Subtotal = item.Precio_Compra,
+                        Total = item.TOTAL
+                    };
+                    db.detallecompras.Add(detail);
 
-                comando2.Parameters["@itemcantidadcomprada"].Value = item.CANTIDAD; //asignamos el valor del total
-                comando2.Parameters["@idproducto"].Value = item.IdProducto; //asignamos el valor de la ultima factura
+                    conexion.Open();//abrimos la coneccion a la base de datos
+                    SqlCommand comando2 = new SqlCommand("update Producto set Stock = Producto.Stock + @itemcantidadcomprada where IdProducto = @idproducto", conexion); //declaramos una variable tipo sqlcommand para hacer un update a la ultima factura realizada con el total neto
+                    comando2.Parameters.Add("@itemcantidadcomprada", SqlDbType.Int); //declaramos un parametro para la cantidad de articulos vendido
+                    comando2.Parameters.Add("@idproducto", SqlDbType.Int); //declaramos un parametro para saber cual fue el producto vendido
 
-                comando2.ExecuteNonQuery();//ejecutamos nuestra consulta
-                conexion.Close();//cerramos la coneccion a la base de datos
+                    comando2.Parameters["@itemcantidadcomprada"].Value = item.CANTIDAD; //asignamos el valor del total
+                    comando2.Parameters["@idproducto"].Value = item.IdProducto; //asignamos el valor de la ultima factura
+
+                    comando2.ExecuteNonQuery();//ejecutamos nuestra consulta
+                    conexion.Close();//cerramos la coneccion a la base de datos
+                }
             }
+            else
+            {
+                // Código cuando la lista está vacía
+                ViewBag.carritovacio = "La lista de compra está vacía. Agrega productos antes de guardar la compra.";
+
+                return View("Error");
+
+
+            }
+
+           
+
+
+
 
             //Modulo para actualizar el total neto de la compra
             SqlCommand comando = new SqlCommand("update compras set Total = @totalneto where Idcompra = @ultimoidcompra", conexion); //declaramos una variable tipo sqlcommand para hacer un update a la ultima factura realizada con el total neto

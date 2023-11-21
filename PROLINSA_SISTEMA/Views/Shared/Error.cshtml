@@ -7,8 +7,25 @@
 </head>
 <body>
     <hgroup>
-        <h1>Error.</h1>
         <h2>Error al procesar la solicitud.</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.carritovacio))
+        {
+            <div class="alert alert-warning">
+                @ViewBag.carritovacio
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ViewBag.carritovacio2))
+        {
+            <div class="alert alert-warning">
+                @ViewBag.carritovacio2
+            </div>
+        }
+
+
+
+
     </hgroup>
 </body>
 </html>

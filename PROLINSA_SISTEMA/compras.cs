@@ -22,7 +22,7 @@ namespace PROLINSA_SISTEMA
     
         public int Idcompra { get; set; }
         public Nullable<int> Idproveedor { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public decimal Total { get; set; }
     
         public virtual Proveedores Proveedores { get; set; }

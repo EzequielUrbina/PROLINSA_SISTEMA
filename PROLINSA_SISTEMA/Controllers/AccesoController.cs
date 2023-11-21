@@ -37,6 +37,7 @@ namespace PROLINSA_SISTEMA.Controllers
         //--------------------------------------------------------------------------------------------------------
 
         [HttpPost]
+        [ValidarSesion]
         public ActionResult Registrar(Usuario oUsuario)
         {
             bool registrado;
@@ -123,6 +124,16 @@ namespace PROLINSA_SISTEMA.Controllers
             }
 
         }
+
+
+
+
+
+
+
+
+
+
 
 
         public ActionResult CerrarSesion()

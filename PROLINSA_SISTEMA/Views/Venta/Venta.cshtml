@@ -5,42 +5,59 @@
 }
 
 <h2>Nueva Venta</h2>
+
 @using (Html.BeginForm("Venta", "Venta", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
+    <div class="form-horizontal">
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.IDEMPLEADO, "Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("ID_Empleados", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.IDEMPLEADO, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IDCLIENTE, "Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("IdCliente", null, htmlAttributes: new { @class = "form-control" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IDTIPOFACTURA, "Factura / Cotización", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("IdTipoFactura", null, htmlAttributes: new { @class = "form-control" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.FechaA, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FechaA, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FechaA, "", new { @class = "text-danger" })
-        </div>
+@if (ViewBag.MiDato != null)
+{
+    <div class="alert alert-danger" role="alert">
+       <h1>@ViewBag.MiDato</h1>
     </div>
+}
+
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDEMPLEADO, "Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Empleados", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDEMPLEADO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCLIENTE, "Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdCliente", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDTIPOFACTURA, "Factura / Cotización", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdTipoFactura", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.FechaA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <input type="text" id="fechaA" name="FechaA" class="form-control" style="margin-bottom: 20px;" readonly="readonly" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+                @* También puedes establecer el valor directamente desde el modelo si es necesario *@
+                @* <input type="text" class="form-control" style="margin-bottom: 20px;" readonly="readonly" value="@Model.FechaA.ToString("yyyy-MM-dd")" /> *@
+                @Html.ValidationMessageFor(model => model.FechaA, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
 
 
 
@@ -51,7 +68,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 @Html.ActionLink("Agregar Producto", "AddProduct", new { }, new { @class = "btn btn-primary" })
-                <input type="submit" value="Crear" class="btn btn-success" />
+                <input type="submit" value="Terminar Venta" class="btn btn-success" />
             </div>
         </div>
 
@@ -96,18 +113,23 @@
 
         </table>
 
-    <div class="form-group">
-        <p class="text-right"> Total: @TotalNETO</p>
+        <div class="form-group">
+            <p class="text-right"> Total: @TotalNETO</p>
+        </div>
+
+
+
+
     </div>
-
-
-
-
-</div>
 }
 
 <div>
     @Html.ActionLink("Volver", "VerFacturas", "Venta", new { }, new { @class = "btn btn-secondary" })
 </div>
+
+
+
+
+
 
 

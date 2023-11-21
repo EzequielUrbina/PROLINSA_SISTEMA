@@ -13,17 +13,18 @@ using System.Data.SqlClient;
 using Rotativa;
 
 using PROLINSA_SISTEMA.Permisos;
-
+using Microsoft.Ajax.Utilities;
 
 namespace PROLINSA_SISTEMA.Controllers
 {
-    [ValidarSesion]
+
     public class VentaController : Controller
     {
         private PROLINSAEntities1 db = new PROLINSAEntities1(); //Declaramos la coneccion a la base de datos para poder usarla
-        SqlConnection conexion = new SqlConnection("server=PC ; database=PROLINSA ; integrated security = true");
+        SqlConnection conexion = new SqlConnection("server=LAPTOP-V4474JBK ; database=PROLINSA ; integrated security = true");
 
         // GET: Venta
+        [ValidarSesion]
         public ActionResult Venta()
         {
             OrderView orderView = new OrderView();
@@ -58,11 +59,32 @@ namespace PROLINSA_SISTEMA.Controllers
         [HttpPost]
         public ActionResult Venta(OrderView orderview)
         {
+
             orderview = Session["OrderView"] as OrderView;
             int empleadoid = int.Parse(Request["ID_Empleados"]);
             int clienteid = int.Parse(Request["IdCliente"]);
             int facturaid = int.Parse(Request["IdTipoFactura"]);
-            DateTime fechaventa = Convert.ToDateTime(Request["FechaA"]);
+            /*  DateTime fechaventa = Convert.ToDateTime(Request["FechaA"]); */
+
+            DateTime fechaventa;
+            string fechaAString = Request["FechaA"];
+            fechaventa = Convert.ToDateTime(fechaAString);
+
+
+            /*  validamos si existe stock */
+
+            if (orderview.idproductos == null || orderview.idproductos.Count == 0)
+            {
+                // Código a ejecutar si IdProducto es nulo o su conteo es cero
+                ViewBag.carritovacio2 = "La lista de venta está vacía. Agrega productos antes de guardar la venta.";
+
+                return View("Error");
+            }
+
+
+
+
+
 
 
 
@@ -92,7 +114,8 @@ namespace PROLINSA_SISTEMA.Controllers
                     Cantidad = item.CANTIDAD,
                     Subtotal = item.Precio_Venta,
                     Total = item.TOTAL,
-                };
+
+            };
                 db.detallefactura.Add(detail);
 
 
@@ -151,20 +174,33 @@ namespace PROLINSA_SISTEMA.Controllers
 
 
         [HttpGet]
+        [ValidarSesion]
         public ActionResult AddProduct()
         {
             var listp = db.Producto.ToList();
             ViewBag.IdProducto = new SelectList(listp, "IdProducto", "NombreProducto");
 
+            
+
             return View();
         }
 
+
         [HttpPost]
+        [ValidarSesion]
         public ActionResult AddProduct(FacturaDetalle productorder)
         {
             var orderview = Session["OrderView"] as OrderView;
             var productid = int.Parse(Request["IdProducto"]); 
             var product = db.Producto.Find(productid);
+
+            var stockactual = product.Stock;
+
+            if (product.Stock <= 0)
+            {
+                ViewBag.MiDato = "Hola desde el controlador";
+                return RedirectToAction("Venta");
+            }
 
             productorder = new FacturaDetalle
             {
@@ -174,7 +210,7 @@ namespace PROLINSA_SISTEMA.Controllers
                 CANTIDAD = int.Parse(Request["CANTIDAD"]),        
             };
 
-            orderview.idproductos.Add(productorder);//revisar esta linia en el video
+            orderview.idproductos.Add(productorder);
 
 
             var list1 = db.EMPLEADOS.ToList();
@@ -197,6 +233,7 @@ namespace PROLINSA_SISTEMA.Controllers
 
 
         [HttpGet]
+        [ValidarSesion]
         public ActionResult VerFacturas()
         {
             List<Facturas> facturas1 = db.Facturas.ToList();
@@ -205,6 +242,7 @@ namespace PROLINSA_SISTEMA.Controllers
 
 
         [HttpGet]
+        [ValidarSesion]
         public ActionResult _Detalleparcial(int Facturaid)
         {
             List<detallefactura> detalle = db.detallefactura.Where(m => m.IdDetalleFactura == Facturaid).ToList();
@@ -213,7 +251,9 @@ namespace PROLINSA_SISTEMA.Controllers
         }
 
 
+
         [HttpGet]
+        [ValidarSesion]
         public ActionResult _VentasFacturacion(int Facturaid, DateTime fecha, decimal total, string cliente, string empleado, string tipo)
         {
             List<detallefactura> detalle = db.detallefactura.Where(m => m.IdDetalleFactura == Facturaid).ToList();
@@ -229,6 +269,8 @@ namespace PROLINSA_SISTEMA.Controllers
         [HttpGet]
         public ActionResult _VentasDescargar(int Facturaid, DateTime fecha, decimal total, string cliente, string empleado, string tipo)
         {
+            
+
             List<detallefactura> detalle = db.detallefactura.Where(m => m.IdDetalleFactura == Facturaid).ToList();
             ViewBag.fechaa = fecha;
             ViewBag.nFactura = Facturaid;
@@ -242,6 +284,7 @@ namespace PROLINSA_SISTEMA.Controllers
 
         public ActionResult ImprimirFactura(int Facturaid, DateTime fecha, decimal total, string cliente, string empleado, string tipo)
         {
+            
             return new ActionAsPdf("_VentasDescargar", new { Facturaid, fecha, total, cliente, empleado, tipo }) { FileName = "Factura.pdf" };
         }
 

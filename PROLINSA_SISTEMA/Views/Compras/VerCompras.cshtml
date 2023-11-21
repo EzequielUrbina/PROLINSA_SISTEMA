@@ -11,6 +11,7 @@
     @Html.ActionLink("Nueva compra", "Compras", new { }, new { @class = "btn btn-success" })
 </p>
 
+
 <table class="table table-bordered" id="orden">
     <thead>
         <tr>
@@ -28,6 +29,7 @@
                 <td style="text-align:center"> <img src="~/Content/imagenes/anadir.png" orderId="@item.Idcompra" /> </td>
                 <td style="text-align:center" width="110">@item.Idcompra</td>
                 <td style="text-align:center">@item.Proveedores.NombreProveedor</td>
+                @*<td style="text-align:center">@item.Fecha.ToString("dd/MM/yyyy")</td>*@
                 <td style="text-align:center">@item.Fecha.ToString("dd/MM/yyyy")</td>
                 <td style="text-align:center">@item.Total</td>
             </tr>
